@@ -4,7 +4,8 @@ from distutils.core import setup
 setup(
     name= "djangospam",
     packages = ["djangospam"],
-    version = "0.1",
+    package_data = {"djangospam": ["templates/djangospam/form.html"]},
+    version = "0.1.3",
     description = "Django antispam module",
     author = "Leandro Arndt",
     author_email = "contato@correioprogressista.com.br",
