@@ -1,4 +1,0 @@
-djangospam
-==========
-
-Django antispam module

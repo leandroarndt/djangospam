@@ -1,0 +1,6 @@
+include LICENSE.txt
+recursive-include djangospam *.html *.py
+prune .git
+prune build
+exclude .spyderproject
+global-exclude *~
