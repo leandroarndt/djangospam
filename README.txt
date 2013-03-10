@@ -8,24 +8,17 @@ Fake form use
 -------------
 
 Include `djangospam` in your installed modules (at `settings.py`) and
-insert the following code in your template (*todo*)::
-
-    {% load djangospam %}
-    
-    ...
-    
-    {% djangospam 'optional destination uri' }
-
-or (*working*)::
+insert the following code in your template, **before** the true form::
 
     {% include 'djangospam/form.html' %}
 
-In this last case, you may also define a `spam_uri` context variable with the
+You may also define a `spam_uri` context variable with the
 fake formulary destination URI. If no URI is defined, the form will be posted
-at the same address of the page being attacked
-(It will be used a
+at the same address of the page in which the form has been placed
+(it will be used a
 `<form style="display:none" method="post" action="">...</form>`
-code).
+code). The destination address must accept POST requests and should not change
+the database.
 
 Akismet
 -------
