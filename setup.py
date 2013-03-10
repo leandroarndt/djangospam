@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 from distutils.core import setup
+import djangospam
 
 setup(
     name= "djangospam",
     packages = ["djangospam"],
     package_data = {"djangospam": ["templates/djangospam/form.html"]},
-    version = "0.1.6",
+    version = djangospam.__version__,
     description = "Django antispam module",
     author = "Leandro Arndt",
     author_email = "contato@correioprogressista.com.br",
