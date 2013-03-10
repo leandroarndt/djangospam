@@ -46,14 +46,16 @@ django.contrib.comments.moderation."""
 
     def allow(self, comment, content_object, request):
         """Moderates comments."""
-        POST = urlencode({"blog": settings.AKISMET_BLOG,
+        POST = urlencode({"blog": settings.AKISMET_BLOG.encode("utf-8"),
                 "user_ip": comment.ip_address,
-                "user_agent": request.META.get('HTTP_USER_AGENT', ""),
-                "referrer": request.META.get('HTTP_REFERRER', ""),
-                "comment_author": comment.user_name,
-                "comment_author_email": comment.user_email,
-                "comment_author_url": comment.user_url,
-                "comment_content": comment.comment})
+                "user_agent": request.META.get('HTTP_USER_AGENT', "").
+                                                encode("utf-8"),
+                "referrer": request.META.get('HTTP_REFERRER', "").
+                                                encode("utf-8"),
+                "comment_author": comment.user_name.encode("utf-8"),
+                "comment_author_email": comment.user_email.encode("utf-8"),
+                "comment_author_url": comment.user_url.encode("utf-8"),
+                "comment_content": comment.comment.encode("utf-8")})
         connection = httplib.HTTPConnection(AKISMET_URL, AKISMET_PORT)
         connection.request("POST", AKISMET_PATH, POST,
                            {"User-Agent": AKISMET_USERAGENT,
