@@ -22,12 +22,20 @@ the database.
 Akismet
 -------
 
-*TODO*
-
-Settings variables
-------------------
-
-These variables **must** be defined in your `settings.py`:
+Besides including `djangospam` in your installed modules (at `settings.py`),
+you should insert the following code to your models file:
+    
+    from djangospam import akismet
+    
+    class MyModel(...):
+        ...
+    
+    try:
+        akismet.register(MyModel)
+    except akismet.AlreadyModerated:
+        pass
+    
+You also **must** define the variables below at `settings.py`:
 
 :AKISMET_BLOG: Your home page URL, including http://
 :AKISMET_KEY: Your application key at akismet.com

@@ -55,7 +55,28 @@ the database.
 Akismet
 -------
 
-*TODO*
+Besides including `djangospam` in your installed modules (at `settings.py`),
+you should insert the following code to your models file:
+    
+    from djangospam import akismet
+    
+    class MyModel(...):
+        ...
+    
+    try:
+        akismet.register(MyModel)
+    except akismet.AlreadyModerated:
+        pass
+    
+You also **must** define the variables below at `settings.py`:
+
+:AKISMET_BLOG: Your home page URL, including http://
+:AKISMET_KEY: Your application key at akismet.com
+:AKISMET_USERAGENT: Your application name
+:AKISMET_USERAGENT_VERSION: Your application version
+:DISCARD_SPAM:
+    If spam should be either automaticaly discarded or marked as not public and
+    removed
 
 Results
 -------

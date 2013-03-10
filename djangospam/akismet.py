@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Defines a comment checker that should be attached to your commented model.
+"""Defines a comment moderator that should be attached to your commented model.
 Eg.:
     
     from djangospam import akismet
