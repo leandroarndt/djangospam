@@ -5,7 +5,7 @@ setup(
     name= "djangospam",
     packages = ["djangospam"],
     package_data = {"djangospam": ["templates/djangospam/form.html"]},
-    version = "0.1.3",
+    version = "0.1.6",
     description = "Django antispam module",
     author = "Leandro Arndt",
     author_email = "contato@correioprogressista.com.br",
@@ -33,21 +33,23 @@ djangospam
 Django antispam module with an invisible fake comment/contact form and Akismet
 verification.
 
+See <https://github.com/leandroarndt/djangospam> for up to date help.
+
 Fake form use
 -------------
 
-Include `djangospam.spam` in your installed modules (at `settings.py`) and
+Include `djangospam` in your installed modules (at `settings.py`) and
 insert the following code in your template (*todo*)::
 
-    {% load spam %}
+    {% load djangospam %}
     
     ...
     
-    {% spam 'optional destination uri' }
+    {% djangospam 'optional destination uri' }
 
 or (*working*)::
 
-    {% include 'spam/form.html' %}
+    {% include 'djangospam/form.html' %}
 
 In this last case, you may also define a `spam_uri` context variable with the
 fake formulary destination URI. If no URI is defined, the form will be posted
