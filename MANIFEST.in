@@ -4,4 +4,5 @@ recursive-include djangospam *.html *.py
 prune .git
 prune dist
 exclude .spyderproject
+recursive-exclude doc
 global-exclude *~

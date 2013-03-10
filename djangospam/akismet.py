@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """Defines a comment moderator that should be attached to your commented model.
-Eg.:
+Eg.::
     
     from djangospam import akismet
     
@@ -11,6 +11,8 @@ Eg.:
         akismet.register(MyModel)
     except akismet.AlreadyModerated:
         pass
+
+See akismet_ for **mandatory settings**.
 """
 from __future__ import unicode_literals
 from django.contrib.comments.moderation import CommentModerator, \
