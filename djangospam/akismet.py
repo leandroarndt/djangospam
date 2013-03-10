@@ -25,7 +25,7 @@ AKISMET_PORT = 80
 AKISMET_PATH = "/1.1/comment-check"
 AKISMET_USERAGENT = "%s/%s | %s/%s" % (settings.AKISMET_USERAGENT,
                                        settings.AKISMET_USERAGENT_VERSION,
-                                       "djangospam", djangospam.version)
+                                       "djangospam", djangospam.__version__)
 
 def register(model):
     """Just a wrapper around django.contrib.comments.moderation.register.
@@ -48,8 +48,8 @@ django.contrib.comments.moderation."""
         """Moderates comments."""
         POST = urlencode({"blog": settings.AKISMET_BLOG,
                 "user_ip": comment.ip_address,
-                "user_agent": request.META['HTTP_USER_AGENT'],
-                "referrer": request.META['HTTP_REFERRER'],
+                "user_agent": request.META.get('HTTP_USER_AGENT', ""),
+                "referrer": request.META.get('HTTP_REFERRER', ""),
                 "comment_author": comment.user_name,
                 "comment_author_email": comment.user_email,
                 "comment_author_url": comment.user_url,
@@ -59,14 +59,14 @@ django.contrib.comments.moderation."""
                            {"User-Agent": AKISMET_USERAGENT,
                             "Content-type":"application/x-www-form-urlencoded"
                             })
-        response = connection.getresponse()
-        if response.read() == "false":
+        status, result = connection.response.status, connection.response.read()
+        if result == "false":
             return True
-        elif response.read() == "true" and settings.DISCARD_SPAM:
+        elif result == "true" and settings.DISCARD_SPAM:
             return False
-        elif response.read() == "true":
+        elif result == "true":
             comment.is_removed = True
             comment.is_public = False
             return True
         else:
-            raise AkismetError(response.status, response.read())
+            raise AkismetError(status, result)
