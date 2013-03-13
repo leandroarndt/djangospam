@@ -18,8 +18,14 @@ from __future__ import unicode_literals
 from django.contrib.comments.moderation import CommentModerator, \
                                                moderator, AlreadyModerated
 from django.conf import settings
-from urllib import urlencode
-import httplib
+try:
+    from urllib import urlencode
+except ImportError:
+    from urllib.parse import urlencode
+try:
+    from httplib import HTTPConnection
+except ImportError:
+    from http.client import HTTPConnection
 import djangospam
 
 AKISMET_URL = ".".join([settings.AKISMET_KEY, "rest.akismet.com"])
@@ -58,7 +64,7 @@ django.contrib.comments.moderation."""
                 "comment_author_email": comment.user_email.encode("utf-8"),
                 "comment_author_url": comment.user_url.encode("utf-8"),
                 "comment_content": comment.comment.encode("utf-8")})
-        connection = httplib.HTTPConnection(AKISMET_URL, AKISMET_PORT)
+        connection = HTTPConnection(AKISMET_URL, AKISMET_PORT)
         connection.request("POST", AKISMET_PATH, POST,
                            {"User-Agent": AKISMET_USERAGENT,
                             "Content-type":"application/x-www-form-urlencoded"
