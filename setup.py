@@ -38,8 +38,8 @@ djangospam
 Django antispam module with an invisible fake comment/contact form and Akismet
 verification.
 
-See http://pythonhosted.org/djangospam for help. Now compatible with both
-Python 2 and 3.
+See http://pythonhosted.org/djangospam for complete documentation. Now
+compatible with both Python 2 and 3.
 
 Fake form use
 -------------
