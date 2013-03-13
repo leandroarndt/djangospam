@@ -12,7 +12,7 @@ setup(
     author_email = "contato@correioprogressista.com.br",
     url = "https://github.com/leandroarndt/djangospam",
     download_url = \
-        "https://github.com/leandroarndt/djangospam/archive/v0.2.0.tar.gz",
+        "https://github.com/leandroarndt/djangospam/archive/v0.2.1.tar.gz",
     keywords = ["django", "spam", "akismet"],
     requires = ["django"],
     license = "BSD",
@@ -27,7 +27,9 @@ setup(
         "Topic :: Internet :: WWW/HTTP",
         "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
         "Topic :: Internet :: WWW/HTTP :: Site Management",
-        "Topic :: Software Development :: Libraries :: Python Modules"
+        "Topic :: Software Development :: Libraries :: Python Modules",
+        "Programming Language :: Python :: 2",
+        "Programming Language :: Python :: 3",
     ],
     long_description = """
 djangospam
@@ -36,7 +38,8 @@ djangospam
 Django antispam module with an invisible fake comment/contact form and Akismet
 verification.
 
-See http://pythonhosted.org/djangospam for up to date help.
+See http://pythonhosted.org/djangospam for help. Now compatible with both
+Python 2 and 3.
 
 Fake form use
 -------------
