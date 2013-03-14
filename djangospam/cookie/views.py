@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 from cookie import COOKIE_KEY, COOKIE_SPAM
 
-def spammerView(request):
+def spammer_view(request):
     """View for setting cookies on spammers. Used in conjunction with
     spamform_ tag."""
     response = HttpResponse("")

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Offers spamform_ tag and SpamCookieMiddleware_ for prohibiting site
-access to known spam bots. You should add `djangospam.cookie.SpamCookieMiddleware` to your
+access to known spam bots. You should add
+`djangospam.cookie.SpamCookieMiddleware` to your
 `MIDDLEWARE_CLASSES` at `settings.py` **and** use spamform_ tag before your
 true form. You must also add the following to your urls.py::
     
@@ -13,6 +14,10 @@ true form. You must also add the following to your urls.py::
         r"^somewhere/", include(djangospam.cookie.urls),
         ...
         )
+
+In your template, you must add the following **before** the real form::
+    
+    {% include 'djangospam/cookieform.html' }
 
 If you want set a different cookie key or different values, use
 the following variables on your settings file::

@@ -2,4 +2,4 @@
 from django.conf.urls import patterns
 
 urlpatterns = patterns("views",
-                       r"^/spam$", "spammerView")
+                       r"^/spam$", "spammer_view")
