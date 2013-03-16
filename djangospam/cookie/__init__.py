@@ -11,7 +11,7 @@ true form. You must also add the following to your urls.py::
 
     urlpatterns = patterns(
         ...
-        r"^somewhere/", include(djangospam.cookie.urls),
+        (r"^somewhere/", include(djangospam.cookie.urls)),
         ...
         )
 

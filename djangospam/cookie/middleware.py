@@ -40,10 +40,12 @@ class SpamCookieMiddleware(object):
         # Unknown user, set cookie and go on...
             response.set_cookie(COOKIE_KEY, COOKIE_PASS, httponly=True,
                                 expires=datetime.now()+timedelta(days=30))
-        if COOKIE_LOG:
-            f = open(COOKIE_LOG, "a")
-            f.write("PASS RESPONSE type %s page %s user agent %s\n" %\
-                    (request.method, request.path_info,
-                     request.META["HTTP_USER_AGENT"]))
-            f.close()
+            # Only logged if we have to set the PASS cookie
+            if COOKIE_LOG:
+                f = open(COOKIE_LOG, "a")
+                f.write("PASS RESPONSE type %s page %s user agent %s\n" %\
+                        (request.method, request.path_info,
+                         request.META["HTTP_USER_AGENT"]))
+                f.close()
+                
         return response

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.conf.urls import patterns
+from django.conf.urls.defaults import patterns
 
-urlpatterns = patterns("views",
-                       r"^/spam$", "spammer_view")
+urlpatterns = patterns('',
+                       (r'^spam$', 'djangospam.cookie.views.spammer_view'),)
