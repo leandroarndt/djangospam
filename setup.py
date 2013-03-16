@@ -12,7 +12,7 @@ setup(
     author_email = "contato@correioprogressista.com.br",
     url = "https://github.com/leandroarndt/djangospam",
     download_url = \
-        "https://github.com/leandroarndt/djangospam/archive/v0.2.1.tar.gz",
+        "https://github.com/leandroarndt/djangospam/archive/master.zip",
     keywords = ["django", "spam", "akismet"],
     requires = ["django"],
     license = "BSD",

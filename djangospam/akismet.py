@@ -69,7 +69,8 @@ django.contrib.comments.moderation."""
                            {"User-Agent": AKISMET_USERAGENT,
                             "Content-type":"application/x-www-form-urlencoded"
                             })
-        status, result = connection.response.status, connection.response.read()
+        response = connection.getresponse()
+        status, result = response.status, response.read()
         if result == "false":
             return True
         elif result == "true" and settings.DISCARD_SPAM:
