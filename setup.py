@@ -93,5 +93,17 @@ Results
 The fake form alone is getting 100% efficiency at
 http://www.correioprogressista.com.br/, which used to have more than 200
 spam comments each day. Even so, I recommend using Akismet or another
-spam analysis tool.""",
+spam analysis tool.
+
+Change log
+----------
+
+* 0.2:
+    * 0.2.2: Fixed bug at akismet module.
+    * 0.2.1: Made compatible with both Python 2 and 3.
+    * 0.2.0: Implemented Akismet verification.
+* 0.1:
+    * 0.1.1-0.1.6: Bugfixes.
+    * 0.1.0: First version.
+""",
 )
