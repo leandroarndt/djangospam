@@ -23,8 +23,12 @@ If you want set a different cookie key or different values, use
 the following variables on your settings file::
     
     DJANGOSPAM_COOKIE_NAME = "MyAlternativeCookieKey" # Default: "dsid"
-    DJANGOSPAM_COOKIE_OK   = "AnotherOkValue"         # Default: "1"
+    DJANGOSPAM_COOKIE_PASS = "AnotherOkValue"         # Default: "1"
     DJANGOSPAM_COOKIE_SPAM = "AnotherSpamValue"       # Default: "0"
+
+You can also activate logging:
+    
+    DJANGOSPAM_LOG = "/path/to/log.file" # Default: False
 """
 
 from django.conf import settings
@@ -37,12 +41,17 @@ try:
 except NameError:
     COOKIE_KEY = "dsid"
     
-# COOKIE_OK means we don't know if it is a spammer or not.
+# COOKIE_PASS means we don't know if it is a spammer or not.
 try:
-    COOKIE_OK = settings.DJANGOSPAM_COOKIE_OK
+    COOKIE_PASS = settings.DJANGOSPAM_COOKIE_PASS
 except NameError:
-    COOKIE_OK = "0"
+    COOKIE_PASS = "0"
 try:
     COOKIE_SPAM = settings.DJANGOSPAM_COOKIE_SPAM
 except NameError:
     COOKIE_SPAM = "1"
+    
+try:
+    COOKIE_LOG = settings.DJANGOSPAM_LOG
+except:
+    COOKIE_LOG = False
