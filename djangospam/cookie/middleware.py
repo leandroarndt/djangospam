@@ -2,7 +2,7 @@
 from django.http import HttpResponse
 from datetime import datetime, timedelta
 
-from cookie import COOKIE_KEY, COOKIE_PASS, COOKIE_SPAM, COOKIE_LOG
+from settings import COOKIE_KEY, COOKIE_PASS, COOKIE_SPAM, COOKIE_LOG
 
 class SpamCookieMiddleware(object):
     """Verifies if a client has already been tagged as spam bot through
@@ -14,7 +14,7 @@ class SpamCookieMiddleware(object):
         """Discovers if a request is from a knwon spam bot and denies access."""
         
         if COOKIE_KEY in request.COOKIES and \
-            request.get_cookie(COOKIE_KEY) == COOKIE_SPAM:
+            request.COOKIES[COOKIE_KEY] == COOKIE_SPAM:
                 # Is a known spammer.
                 response = HttpResponse("")
                 # We do not reveal why it has been forbbiden:

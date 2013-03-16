@@ -56,10 +56,10 @@ django.contrib.comments.moderation."""
         """Moderates comments."""
 
         # Tests for cookie:
-        if djangospam.cookie.DJANGOSPAM_COOKIE_KEY not in request.COOKIES \
+        if djangospam.cookie.COOKIE_KEY not in request.COOKIES \
             and settings.DISCARD_SPAM:
                 return False
-        elif djangospam.cookie.DJANGOSPAM_COOKIE_KEY not in request.COOKIES:
+        elif djangospam.cookie.COOKIE_KEY not in request.COOKIES:
             comment.is_removed = True
             comment.is_public = False
             return True
@@ -79,7 +79,8 @@ django.contrib.comments.moderation."""
                            {"User-Agent": AKISMET_USERAGENT,
                             "Content-type":"application/x-www-form-urlencoded"
                             })
-        status, result = connection.response.status, connection.response.read()
+        response = connection.getresponse()
+        status, result = response.status, response.read()
         if result == "false":
             return True
         elif result == "true" and settings.DISCARD_SPAM:

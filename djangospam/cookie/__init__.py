@@ -31,27 +31,7 @@ You can also activate logging:
     DJANGOSPAM_LOG = "/path/to/log.file" # Default: False
 """
 
-from django.conf import settings
-
 # We want to make it available at djangospam.cookie.SpamCookieMiddleware
 from middleware import SpamCookieMiddleware
 
-try:
-    COOKIE_KEY = settings.DJANGOSPAM_COOKIE_KEY
-except NameError:
-    COOKIE_KEY = "dsid"
-    
-# COOKIE_PASS means we don't know if it is a spammer or not.
-try:
-    COOKIE_PASS = settings.DJANGOSPAM_COOKIE_PASS
-except NameError:
-    COOKIE_PASS = "0"
-try:
-    COOKIE_SPAM = settings.DJANGOSPAM_COOKIE_SPAM
-except NameError:
-    COOKIE_SPAM = "1"
-    
-try:
-    COOKIE_LOG = settings.DJANGOSPAM_LOG
-except:
-    COOKIE_LOG = False
+from settings import COOKIE_KEY, COOKIE_PASS, COOKIE_SPAM, COOKIE_LOG
