@@ -12,12 +12,11 @@ Eg.::
     except akismet.AlreadyModerated:
         pass
 
-See akismet_ for **mandatory settings**.
+See akismet_ above for **mandatory settings**.
 """
 from __future__ import unicode_literals
 from django.contrib.comments.moderation import CommentModerator, \
                                                moderator, AlreadyModerated
-from django.conf import settings
 try:
     from urllib import urlencode
 except ImportError:
@@ -26,14 +25,15 @@ try:
     from httplib import HTTPConnection
 except ImportError:
     from http.client import HTTPConnection
-import djangospam
+import djangospam, settings, django.conf
 
 AKISMET_URL = ".".join([settings.AKISMET_KEY, "rest.akismet.com"])
 AKISMET_PORT = 80
 AKISMET_PATH = "/1.1/comment-check"
-AKISMET_USERAGENT = "%s/%s | %s/%s" % (settings.AKISMET_USERAGENT,
-                                       settings.AKISMET_USERAGENT_VERSION,
-                                       "djangospam", djangospam.__version__)
+AKISMET_USERAGENT = "%s/%s | %s/%s" % \
+                    (settings.AKISMET_USERAGENT,
+                     settings.AKISMET_USERAGENT_VERSION,
+                     "djangospam", djangospam.__version__)
 
 def register(model):
     """Just a wrapper around django.contrib.comments.moderation.register.
@@ -56,15 +56,18 @@ django.contrib.comments.moderation."""
         """Moderates comments."""
 
         # Tests for cookie:
-        if djangospam.cookie.COOKIE_KEY not in request.COOKIES \
-            and settings.DISCARD_SPAM:
-                return False
-        elif djangospam.cookie.COOKIE_KEY not in request.COOKIES:
-            comment.is_removed = True
-            comment.is_public = False
-            return True
+        if "djangospam.cookie.SpamCookieMiddleware" in \
+            django.conf.settings.MIDDLEWARE_CLASSES:
+            if djangospam.cookie.COOKIE_KEY not in request.COOKIES \
+                and settings.DISCARD_SPAM:
+                    return False
+            elif djangospam.cookie.COOKIE_KEY not in request.COOKIES:
+                comment.is_removed = True
+                comment.is_public = False
+                return True
         
-        POST = urlencode({"blog": settings.AKISMET_BLOG.encode("utf-8"),
+        POST = urlencode({
+                "blog": settings.AKISMET_BLOG.encode("utf-8"),
                 "user_ip": comment.ip_address,
                 "user_agent": request.META.get('HTTP_USER_AGENT', "").
                                                 encode("utf-8"),

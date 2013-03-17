@@ -6,8 +6,7 @@ from datetime import datetime, timedelta
 from settings import COOKIE_KEY, COOKIE_SPAM, COOKIE_LOG
 
 def spammer_view(request):
-    """View for setting cookies on spammers. Used in conjunction with
-    spamform_ tag."""
+    """View for setting cookies on spammers."""
 
     # Permits use of CSRF middleware
     context = RequestContext(request, {})

@@ -6,9 +6,9 @@ from settings import COOKIE_KEY, COOKIE_PASS, COOKIE_SPAM, COOKIE_LOG
 
 class SpamCookieMiddleware(object):
     """Verifies if a client has already been tagged as spam bot through
-`djangospam/cookie.html`. You should add
+`djangospam/cookieform.html`. You should add
 `djangospam.cookie.SpamCookieMiddleware` to your `MIDDLEWARE CLASSES` at
-`settings.py`."""
+`settings.py`. See :mod:`djangospam.cookie` for additional help."""
 
     def process_request(self, request):
         """Discovers if a request is from a knwon spam bot and denies access."""
