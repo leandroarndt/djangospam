@@ -4,8 +4,9 @@ import djangospam
 
 setup(
     name= "djangospam",
-    packages = ["djangospam"],
-    package_data = {"djangospam": ["templates/djangospam/form.html"]},
+    packages = ["djangospam", "djangospam.cookie"],
+    package_data = {"djangospam": ["templates/djangospam/form.html",
+                                   "templates/djangospam/cookieform.html"]},
     version = djangospam.__version__,
     description = "Django antispam module",
     author = "Leandro Arndt",
