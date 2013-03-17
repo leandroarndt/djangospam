@@ -56,7 +56,7 @@ DJANGOSPAM_COOKIE_LOG
 Fake form with cookie middleware
 --------------------------------
 
-.. versionadded:: 0.3.0
+*New in version 0.3.0*
 
 The cookie middleware uses cookies to identify known spam bots. Simple
 crawlers usually don't accept cookies, but spam bots may accept, since
@@ -80,6 +80,10 @@ DJANGOSPAM_COOKIE_SPAM
     djangospam cookie with this value, the middleware will return a 404
     status code (moved permanently or forbidden, according to the standards).
     Defaults to `1`.
+    
+**Note:** If `djangospam.cookie.middleware.SpamCookieMiddleware`
+is being used, `djangospam.akismet` module
+will treat as spam any comment attempt with cookies disabled.
 
 Fake form without middleware
 ----------------------------
@@ -102,7 +106,7 @@ the database.
 Akismet
 -------
 
-.. versionadded:: 0.2.0
+*New in version 0.2.0*
 
 Besides including `djangospam` in your installed modules (at `settings.py`),
 you should insert the following code to your models file::
@@ -127,6 +131,10 @@ AKISMET_USERAGENT
     Your application name
 AKISMET_USERAGENT_VERSION
     Your application version
+    
+**Note:** If `djangospam.cookie.middleware.SpamCookieMiddleware`
+is being used, `djangospam.akismet` module
+will treat as spam any comment attempt with cookies disabled.
 
 Results
 -------
