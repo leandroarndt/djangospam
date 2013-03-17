@@ -5,7 +5,7 @@ import djangospam
 
 setup(
     name= "djangospam",
-    packages = setuptools.find_pacakges(),
+    packages = setuptools.find_packages(),
     package_data = {"djangospam": ["templates/djangospam/form.html",
                                    "templates/djangospam/cookieform.html"]},
     version = djangospam.__version__,
