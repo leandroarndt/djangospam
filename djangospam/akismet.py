@@ -54,6 +54,16 @@ django.contrib.comments.moderation."""
 
     def allow(self, comment, content_object, request):
         """Moderates comments."""
+
+        # Tests for cookie:
+        if djangospam.cookie.COOKIE_KEY not in request.COOKIES \
+            and settings.DISCARD_SPAM:
+                return False
+        elif djangospam.cookie.COOKIE_KEY not in request.COOKIES:
+            comment.is_removed = True
+            comment.is_public = False
+            return True
+        
         POST = urlencode({"blog": settings.AKISMET_BLOG.encode("utf-8"),
                 "user_ip": comment.ip_address,
                 "user_agent": request.META.get('HTTP_USER_AGENT', "").

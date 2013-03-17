@@ -57,4 +57,4 @@ http://www.correioprogressista.com.br/, which used to have more than 200
 spam comments each day. Even so, I recommend using Akismet or another
 spam analysis tool."""
 
-__version__ = "0.2.2"
+__version__ = "0.3.0"

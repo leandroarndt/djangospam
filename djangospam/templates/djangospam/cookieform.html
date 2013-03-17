@@ -1,5 +1,5 @@
 <div style="display:none">
-<form method="post" action="{{ spam_uri }}">
+<form method="post" action="{% url djangospam.cookie.views.spammer_view %}">
     <input id="id_honeypot" type="text" name="honeypot"></input>
     <input id="id_name" type="text" name="name"></input>
     <input id="id_email" type="text" name="email"></input>
