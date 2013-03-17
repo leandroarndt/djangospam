@@ -4,7 +4,7 @@ import djangospam
 
 setup(
     name= "djangospam",
-    packages = ["djangospam", "djangospam.cookie"],
+    packages = ["djangospam"],# "djangospam.cookie"],
     package_data = {"djangospam": ["templates/djangospam/form.html",
                                    "templates/djangospam/cookieform.html"]},
     version = djangospam.__version__,
@@ -13,7 +13,7 @@ setup(
     author_email = "contato@correioprogressista.com.br",
     url = "https://github.com/leandroarndt/djangospam",
     download_url = \
-        "https://github.com/leandroarndt/djangospam/archive/v0.3.1.tar.gz",
+        "https://github.com/leandroarndt/djangospam/archive/v0.3.2.tar.gz",
     keywords = ["django", "spam", "akismet", "middleware"],
     requires = ["django"],
     license = "BSD",
@@ -157,7 +157,9 @@ Change log
 ----------
 
 * 0.3:
-    * 0.3.1 (*2013-03-17*)
+    * 0.3.2 (*2013-03-17*):
+        Fixed new setup bug (setup.py)
+    * 0.3.1 (*2013-03-17*):
         Fixed setup bug (in Manifest.in)
     * 0.3.0 (*2013-03-17*):
         Implemented cookie middleware

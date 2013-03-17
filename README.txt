@@ -126,7 +126,9 @@ Change log
 ----------
 
 * 0.3:
-    * 0.3.1 (*2013-03-17*)
+    * 0.3.2 (*2013-03-17*):
+        Fixed new setup bug (setup.py)
+    * 0.3.1 (*2013-03-17*):
         Fixed setup bug (in Manifest.in)
     * 0.3.0 (*2013-03-17*):
         Implemented cookie middleware
