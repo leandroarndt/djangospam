@@ -129,7 +129,7 @@ Change log
     * 0.3.3 (*2013-03-17*):
         Worked around pip bug.
     * 0.3.2 (*2013-03-17*):
-        Fixed new setup bug (setup.py)
+        Fixed new setup bug (setup.py) - NOT A BUG, see v. 0.3.3.
     * 0.3.1 (*2013-03-17*):
         Fixed setup bug (in Manifest.in)
     * 0.3.0 (*2013-03-17*):
