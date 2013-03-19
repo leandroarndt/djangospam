@@ -164,7 +164,7 @@ Change log
 ----------
 
 * 0.3:
-    * 0.3.4 (*2013-03-18):
+    * 0.3.4 (*2013-03-18*):
         Improved forms and URL.
     * 0.3.3 (*2013-03-17*):
         Worked around pip bug.
