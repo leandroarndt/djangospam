@@ -8,4 +8,4 @@ may be any path).
 from django.conf.urls.defaults import patterns
 
 urlpatterns = patterns('',
-                       (r'^spam$', 'djangospam.cookie.views.spammer_view'),)
+                       (r'^post$', 'djangospam.cookie.views.spammer_view'),)

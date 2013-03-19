@@ -52,6 +52,9 @@ DJANGOSPAM_COOKIE_SPAM
     is being used, :mod:`djangospam.akismet` module
     will treat as spam any comment attempt with cookies disabled.
 
+You may customize the fake formulary by copying it's template to
+`template/djangospam` at your application's directory and editing it.
+
 Fake form without middleware
 ----------------------------
 
@@ -105,6 +108,9 @@ AKISMET_USERAGENT_VERSION
     is being used, :mod:`djangospam.akismet` module
     will treat as spam any comment attempt with cookies disabled.
 
+You may customize the fake formulary by copying it's template to
+`template/djangospam` at your application's directory and editing it.
+
 Results
 -------
 
@@ -126,6 +132,8 @@ Change log
 ----------
 
 * 0.3:
+    * 0.3.4 (*2013-03-18):
+        Improved forms and URL.
     * 0.3.3 (*2013-03-17*):
         Worked around pip bug.
     * 0.3.2 (*2013-03-17*):
@@ -148,4 +156,4 @@ Change log
         First version.
 """
 
-__version__ = "0.3.3"
+__version__ = "0.3.4"

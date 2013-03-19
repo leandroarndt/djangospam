@@ -86,6 +86,9 @@ DJANGOSPAM_COOKIE_SPAM
 is being used, `djangospam.akismet` module
 will treat as spam any comment attempt with cookies disabled.
 
+You may customize the fake formulary by copying it's template to
+`template/djangospam` at your application's directory and editing it.
+
 Fake form without middleware
 ----------------------------
 
@@ -103,6 +106,9 @@ at the same address of the page in which the form has been placed
 `<form method="post" action="">...</form>`
 code). The destination address must accept POST requests and should not change
 the database.
+
+You may customize the fake formulary by copying it's template to
+`template/djangospam` at your application's directory and editing it.
 
 Akismet
 -------
@@ -158,6 +164,8 @@ Change log
 ----------
 
 * 0.3:
+    * 0.3.4 (*2013-03-18):
+        Improved forms and URL.
     * 0.3.3 (*2013-03-17*):
         Worked around pip bug.
     * 0.3.2 (*2013-03-17*):
