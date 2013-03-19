@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
-"""Defines a comment moderator that should be attached to your commented model.
+"""Defines an Akismet-based comment moderator that should be attached to
+your commented model.
 Eg.::
     
-    from djangospam import akismet
+    from djangospam.akismet import moderator as akismet
     
     class MyModel(...):
         ...
@@ -11,6 +12,16 @@ Eg.::
         akismet.register(MyModel)
     except akismet.AlreadyModerated:
         pass
+
+.. warning::
+    Since version 0.4.0, the Akismet moderator has been turned a separate
+    subpackage. Code using it must be rewritten as follows::
+        
+        from djangospam import akismet
+        
+    must be changed to::
+        
+        from djangospam.akismet import moderator as akismet
 
 See akismet_ above for **mandatory settings**.
 """
@@ -25,7 +36,8 @@ try:
     from httplib import HTTPConnection
 except ImportError:
     from http.client import HTTPConnection
-import djangospam, settings, django.conf
+import djangospam
+from djangospam import settings
 
 AKISMET_URL = ".".join([settings.AKISMET_KEY, "rest.akismet.com"])
 AKISMET_PORT = 80
@@ -54,17 +66,6 @@ django.contrib.comments.moderation."""
 
     def allow(self, comment, content_object, request):
         """Moderates comments."""
-
-        # Tests for cookie:
-        if "djangospam.cookie.SpamCookieMiddleware" in \
-            django.conf.settings.MIDDLEWARE_CLASSES:
-            if djangospam.cookie.COOKIE_KEY not in request.COOKIES \
-                and settings.DISCARD_SPAM:
-                    return False
-            elif djangospam.cookie.COOKIE_KEY not in request.COOKIES:
-                comment.is_removed = True
-                comment.is_public = False
-                return True
         
         POST = urlencode({
                 "blog": settings.AKISMET_BLOG.encode("utf-8"),

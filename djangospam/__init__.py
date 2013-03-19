@@ -73,6 +73,9 @@ at the same address of the page in which the form has been placed
 code). The destination address must accept POST requests and should not change
 the database.
 
+You may customize the fake formulary by copying it's template to
+`template/djangospam` at your application's directory and editing it.
+
 Akismet
 -------
 
@@ -81,7 +84,7 @@ Akismet
 Besides including `djangospam` in your installed modules (at `settings.py`),
 you should insert the following code to your models file::
     
-    from djangospam import akismet
+    from djangospam.akismet import moderator as akismet
     
     class MyModel(...):
         ...
@@ -90,6 +93,16 @@ you should insert the following code to your models file::
         akismet.register(MyModel)
     except akismet.AlreadyModerated:
         pass
+
+.. warning::
+    Since version 0.4.0, the Akismet moderator has been turned a separate
+    subpackage. Code using it must be rewritten as follows::
+        
+        from djangospam import akismet
+        
+    must be changed to::
+        
+        from djangospam.akismet import moderator as akismet
     
 You also **must** define the variables below at `settings.py`:
 
@@ -101,15 +114,6 @@ AKISMET_USERAGENT
     Your application name
 AKISMET_USERAGENT_VERSION
     Your application version
-    
-.. note::
-    
-    If :class:`djangospam.cookie.middleware.SpamCookieMiddleware`
-    is being used, :mod:`djangospam.akismet` module
-    will treat as spam any comment attempt with cookies disabled.
-
-You may customize the fake formulary by copying it's template to
-`template/djangospam` at your application's directory and editing it.
 
 Results
 -------
@@ -131,29 +135,36 @@ it identified 244 spammers and blocked 68 requests from known spammers::
 Change log
 ----------
 
+* 0.4:
+    * 0.4.0 (*2013-03-19*):
+        * Added cookie-based comment moderator.
+        * Transformed Akismet module into a separate subpackage.
+        .. warning::
+            Code that used Akismet module needs to be rewritten. See
+            :mod:`djangospam.akismet` for the current code.
 * 0.3:
     * 0.3.4 (*2013-03-18*):
-        Improved forms and URL.
+        * Improved forms and URL.
     * 0.3.3 (*2013-03-17*):
-        Worked around pip bug.
+        * Worked around pip bug.
     * 0.3.2 (*2013-03-17*):
-        Fixed new setup bug (setup.py) - NOT A BUG, see v. 0.3.3.
+        * Fixed new setup bug (setup.py) - NOT A BUG, see v. 0.3.3.
     * 0.3.1 (*2013-03-17*):
-        Fixed setup bug (in Manifest.in)
+        * Fixed setup bug (in Manifest.in)
     * 0.3.0 (*2013-03-17*):
-        Implemented cookie middleware
+        * Implemented cookie middleware
 * 0.2:
     * 0.2.2 (*2013-03-16*):
-        Fixed bug at akismet module.
+        * Fixed bug at akismet module.
     * 0.2.1 (*2013-03-13*):
-        Made compatible with both Python 2 and 3.
+        * Made compatible with both Python 2 and 3.
     * 0.2.0 (*2013-03-10*):
-        Implemented Akismet verification.
+        * Implemented Akismet verification.
 * 0.1:
     * 0.1.1-0.1.6 (*2013-03-10*):
-        Bugfixes.
+        * Bugfixes.
     * 0.1.0 (*2013-03-09*):
-        First version.
+        * First version.
 """
 
-__version__ = "0.3.4"
+__version__ = "0.4.0"

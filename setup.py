@@ -14,7 +14,7 @@ setup(
     author_email = "contato@correioprogressista.com.br",
     url = "https://github.com/leandroarndt/djangospam",
     download_url = \
-        "https://github.com/leandroarndt/djangospam/archive/v0.3.2.tar.gz",
+        "https://github.com/leandroarndt/djangospam/archive/v0.4.0.tar.gz",
     keywords = ["django", "spam", "akismet", "middleware"],
     requires = ["django"],
     license = "BSD",

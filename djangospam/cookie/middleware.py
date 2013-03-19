@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from datetime import datetime, timedelta
 
 from settings import COOKIE_KEY, COOKIE_PASS, COOKIE_SPAM, COOKIE_LOG
+from djangospam import logger
 
 class SpamCookieMiddleware(object):
     """Verifies if a client has already been tagged as spam bot through
@@ -20,18 +21,13 @@ class SpamCookieMiddleware(object):
                 # We do not reveal why it has been forbbiden:
                 response.status_code = 404
                 if COOKIE_LOG:
-                    f = open(COOKIE_LOG, "a")
-                    f.write("SPAM REQUEST type %s page %s user agent %s\n" %\
-                            (request.method, request.path_info,
-                             request.META["HTTP_USER_AGENT"]))
-                    f.close()
+                    logger.log("SPAM REQUEST", request.method,
+                       request.path_info,
+                       request.META.get("HTTP_USER_AGENT", "undefined"))
                 return response
         if COOKIE_LOG:
-            f = open(COOKIE_LOG, "a")
-            f.write("PASS REQUEST type %s page %s user agent %s\n" %\
-                    (request.method, request.path_info,
-                     request.META["HTTP_USER_AGENT"]))
-            f.close()
+            logger.log("PASS REQUEST", request.method, request.path_info,
+                       request.META.get("HTTP_USER_AGENT", "undefined"))
         return None
     
     def process_response(self, request, response):
@@ -42,10 +38,6 @@ class SpamCookieMiddleware(object):
                                 expires=datetime.now()+timedelta(days=30))
             # Only logged if we have to set the PASS cookie
             if COOKIE_LOG:
-                f = open(COOKIE_LOG, "a")
-                f.write("PASS RESPONSE type %s page %s user agent %s\n" %\
-                        (request.method, request.path_info,
-                         request.META["HTTP_USER_AGENT"]))
-                f.close()
-                
+                logger.log("PASS RESPONSE", request.method, request.path_info,
+                           request.META.get("HTTP_USER_AGENT", "undefined"))                
         return response
