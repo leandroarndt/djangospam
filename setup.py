@@ -44,17 +44,11 @@ cookie based middleware and Akismet verification.
 See http://pythonhosted.org/djangospam for complete documentation. Djangospam
 is compatible with both Python 2 and 3.
 
-General options
----------------
+Quick start
+===========
 
-This option is used by more than one djangospam module/package:
-
-DISCARD_SPAM
-    If spam should be either automaticaly discarded or marked as not public and
-    removed.
-DJANGOSPAM_LOG
-    Log file path and name. Defaults to `False` (no logging). See
-    `djangospam.logger` for more info.
+These are the basic steps for using djangospam. You can get more info on
+the cited modules and at :mod:`djangospam.settings`.
 
 Fake form with cookie middleware
 --------------------------------
@@ -72,24 +66,7 @@ In your template, insert::
 
 You must also add `(r"^somewhere/", include("djangospam.cookie.urls")`
 to your url patterns (usually in your root urls.conf; `somewhere`
-may be any path).
-
-You may also define some variables at your settings file to customize
-your cookie:
-
-DJANGOSPAM_COOKIE_KEY
-    The cookie identifier. Defaults to `dsid`.
-DJANGOSPAM_COOKIE_PASS
-    The initial value of the cookie. It is used only to know beforehand if
-    the user agent accepts cookies. Defaults to `0`.
-DJANGOSPAM_COOKIE_SPAM
-    The cookie value for known spammers. If the HTTP request presents
-    djangospam cookie with this value, the middleware will return a 404
-    status code (moved permanently or forbidden, according to the standards).
-    Defaults to `1`.
-    
-You may customize the fake formulary by copying it's template to
-`template/djangospam` at your application's directory and editing it.
+may be any path, except the one used for true posts).
 
 Fake form without middleware
 ----------------------------
@@ -124,7 +101,7 @@ the djangospam cookie and discards those which don't have it.
 See `djangospam.cookie.middleware` for more info on the cookie system.
 Code that uses this comment moderator **must** use that middleware.
 
-Eg.::
+Your models file should be like this::
     
     from djangospam.cookie import moderator as cookie
     
@@ -180,7 +157,7 @@ AKISMET_USERAGENT_VERSION
     Your application version
 
 Results
--------
+=======
 
 The fake form alone is getting more than 99,9% (*circa* 1,399 out of 
 1,400 spam comments) efficiency at
@@ -197,10 +174,10 @@ it identified 244 spammers and blocked 68 requests from known spammers::
     68
 
 Change log
-----------
+==========
 
 * 0.4:
-    * 0.4.0 (*2013-03-19*):
+    * 0.4.0 (*2013-03-20*):
         * Added cookie-based comment moderator.
         * Transformed Akismet module into a separate subpackage.
         .. warning::

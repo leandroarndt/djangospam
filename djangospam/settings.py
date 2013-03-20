@@ -36,6 +36,10 @@ DJANGOSPAM_COOKIE_SPAM
     djangospam cookie with this value, the middleware will return a 404
     status code (moved permanently or forbidden, according to the standards).
     Defaults to `1`.
+DJANGOSPAM_DISCARD_NO_COOKIE
+    If the comment should be discarded case the cookie is not present.
+    That will happen if either this option or `DISCARD_SPAM` is set to `True`.
+    Defaults to `False`. Used by :mod:`djangospam.cookie.moderator`.
     
 Akismet settings
 ----------------
@@ -84,6 +88,11 @@ try:
     COOKIE_SPAM = settings.DJANGOSPAM_COOKIE_SPAM
 except AttributeError:
     COOKIE_SPAM = "1"
+
+try:
+    DISCARD_NO_COOKIE = settings.DJANGOSPAM_DISCARD_NO_COOKIE
+except AttributeError:
+    DISCARD_NO_COOKIE = False
 
 # Mandatory settings:
 AKISMET_KEY = settings.AKISMET_KEY

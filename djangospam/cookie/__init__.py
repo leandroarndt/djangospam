@@ -28,11 +28,14 @@ DJANGOSPAM_COOKIE_SPAM
     status code (moved permanently or forbidden, according to the standards).
     Defaults to `1`.
     
-.. note::
-    
-    If :class:`djangospam.cookie.middleware.SpamCookieMiddleware`
-    is being used, :mod:`djangospam.akismet` module
-    will treat as spam any comment attempt with cookies disabled.
+Comment moderator
+-----------------
+
+.. versionadded:: 0.4.0
+
+This package also defines a comment moderator which disallows posts
+without the djangospam cookie. See :mod:`djangospam.cookie.moderator` below
+for more info.
 """
 
 # We want to make it available at djangospam.cookie.SpamCookieMiddleware
