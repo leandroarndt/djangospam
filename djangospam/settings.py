@@ -45,6 +45,11 @@ except AttributeError:
     DISCARD_SPAM = False
 
 try:
+    DJANGOSPAM_LOG = settings.DJANGOSPAM_LOG
+except:
+    DJANGOSPAM_LOG = False
+
+try:
     DJANGOSPAM_FAIL_ON_LOG = settings.DJANGOSPAM_FAIL_ON_LOG
 except AttributeError:
     DJANGOSPAM_FAIL_ON_LOG = False
