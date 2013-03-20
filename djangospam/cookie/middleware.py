@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
+"""Middleware module. See :mod:`djangospam.cookie` for more info."""
+
 from django.http import HttpResponse
 from datetime import datetime, timedelta
 
-from settings import COOKIE_KEY, COOKIE_PASS, COOKIE_SPAM, COOKIE_LOG
+from djangospam.settings import COOKIE_KEY, COOKIE_PASS, COOKIE_SPAM, \
+                                DJANGOSPAM_LOG
 from djangospam import logger
 
 class SpamCookieMiddleware(object):
@@ -20,12 +23,12 @@ class SpamCookieMiddleware(object):
                 response = HttpResponse("")
                 # We do not reveal why it has been forbbiden:
                 response.status_code = 404
-                if COOKIE_LOG:
+                if DJANGOSPAM_LOG:
                     logger.log("SPAM REQUEST", request.method,
                        request.path_info,
                        request.META.get("HTTP_USER_AGENT", "undefined"))
                 return response
-        if COOKIE_LOG:
+        if DJANGOSPAM_LOG:
             logger.log("PASS REQUEST", request.method, request.path_info,
                        request.META.get("HTTP_USER_AGENT", "undefined"))
         return None
@@ -37,7 +40,7 @@ class SpamCookieMiddleware(object):
             response.set_cookie(COOKIE_KEY, COOKIE_PASS, httponly=True,
                                 expires=datetime.now()+timedelta(days=30))
             # Only logged if we have to set the PASS cookie
-            if COOKIE_LOG:
+            if DJANGOSPAM_LOG:
                 logger.log("PASS RESPONSE", request.method, request.path_info,
                            request.META.get("HTTP_USER_AGENT", "undefined"))                
         return response

@@ -15,11 +15,27 @@ Logging settings
 
 These afect :mod:`djangospam.logger`:
 
-DJANGOSPAM_COOKIE_LOG
+DJANGOSPAM__LOG
     Log file path and name. Defaults to `False` (no logging).
 DJANGOSPAM_FAIL_ON_LOG
     If djangospam should raise an exception when it fails to log. Defaults
     to `False`.
+
+Cookie settings
+---------------
+
+The following settings are optional and used by :mod:`djangospam.cookie`:
+
+DJANGOSPAM_COOKIE_KEY
+    The cookie identifier. Defaults to `dsid`.
+DJANGOSPAM_COOKIE_PASS
+    The initial value of the cookie. It is used only to know beforehand if
+    the user agent accepts cookies. Defaults to `0`.
+DJANGOSPAM_COOKIE_SPAM
+    The cookie value for known spammers. If the HTTP request presents
+    djangospam cookie with this value, the middleware will return a 404
+    status code (moved permanently or forbidden, according to the standards).
+    Defaults to `1`.
     
 Akismet settings
 ----------------
@@ -53,6 +69,21 @@ try:
     DJANGOSPAM_FAIL_ON_LOG = settings.DJANGOSPAM_FAIL_ON_LOG
 except AttributeError:
     DJANGOSPAM_FAIL_ON_LOG = False
+
+try:
+    COOKIE_KEY = settings.DJANGOSPAM_COOKIE_KEY
+except AttributeError:
+    COOKIE_KEY = "dsid"
+    
+try: # COOKIE_PASS means we don't know if it is a spammer or not.
+    COOKIE_PASS = settings.DJANGOSPAM_COOKIE_PASS
+except AttributeError:
+    COOKIE_PASS = "0"
+    
+try:
+    COOKIE_SPAM = settings.DJANGOSPAM_COOKIE_SPAM
+except AttributeError:
+    COOKIE_SPAM = "1"
 
 # Mandatory settings:
 AKISMET_KEY = settings.AKISMET_KEY

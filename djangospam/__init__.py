@@ -11,8 +11,9 @@ This option is used by more than one djangospam module/package:
 DISCARD_SPAM
     If spam should be either automaticaly discarded or marked as not public and
     removed.
-DJANGOSPAM_COOKIE_LOG
-    Log file path and name. Defaults to `False` (no logging).
+DJANGOSPAM_LOG
+    Log file path and name. Defaults to `False` (no logging). See
+    :mod:`djangospam.logger` for more info.
 
 Fake form with cookie middleware
 --------------------------------
@@ -22,7 +23,7 @@ Fake form with cookie middleware
 The cookie middleware uses cookies to identify known spam bots. Simple
 crawlers usually don't accept cookies, but spam bots may accept, since
 a website may require this to receive comments. In order to use the
-cookie middleware, add `djangospam.cookie.middleware.SpamCookieMiddleware`
+cookie middleware, add :mod:`djangospam.cookie.middleware.SpamCookieMiddleware`
 to `MIDDLEWARE_CLASSES` at your settins file (usually `settings.py`).
 In your template, insert::
     
@@ -76,11 +77,36 @@ the database.
 You may customize the fake formulary by copying it's template to
 `template/djangospam` at your application's directory and editing it.
 
+Cookie-based moderator
+----------------------
+
+.. versionadded:: 0.4.0
+
+:mod:`djangospam.cookie.moderator` defines a cookie-based comment moderator
+that should be attached to
+your commented model. This moderator tests comment post requests for
+the djangospam cookie and discards those which don't have it.
+See :mod:`djangospam.cookie.middleware` for more info on the cookie system.
+Code that uses this comment moderator **must** use that middleware.
+
+Eg.::
+    
+    from djangospam.cookie import moderator as cookie
+    
+    class MyModel(...):
+        ...
+    
+    try:
+        cookie.register(MyModel)
+    except cookie.AlreadyModerated:
+        pass
+
 Akismet
 -------
 
 .. versionadded:: 0.2.0
 
+:mod:`djangospam.akismet.moderator` defines an Akismet-based comment moderator.
 Besides including `djangospam` in your installed modules (at `settings.py`),
 you should insert the following code to your models file::
     
@@ -103,6 +129,9 @@ you should insert the following code to your models file::
     must be changed to::
         
         from djangospam.akismet import moderator as akismet
+    
+    Using from `djangospam import akismet` is now deprecated and won't be
+    available from 1.0.0 on.
     
 You also **must** define the variables below at `settings.py`:
 
@@ -142,6 +171,7 @@ Change log
         .. warning::
             Code that used Akismet module needs to be rewritten. See
             :mod:`djangospam.akismet` for the current code.
+        * Improved logger.
 * 0.3:
     * 0.3.4 (*2013-03-18*):
         * Improved forms and URL.

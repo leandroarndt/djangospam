@@ -17,7 +17,21 @@ Eg.::
     except cookie.AlreadyModerated:
         pass
 
-See :mod:`djangospam.settings` for available options.
+Settings
+--------
+
+The following settings are optional:
+
+DJANGOSPAM_COOKIE_KEY
+    The cookie identifier. Defaults to `dsid`.
+DJANGOSPAM_COOKIE_PASS
+    The initial value of the cookie. It is used only to know beforehand if
+    the user agent accepts cookies. Defaults to `0`.
+DJANGOSPAM_COOKIE_SPAM
+    The cookie value for known spammers. If the HTTP request presents
+    djangospam cookie with this value, the middleware will return a 404
+    status code (moved permanently or forbidden, according to the standards).
+    Defaults to `1`.
 """
 from __future__ import unicode_literals
 

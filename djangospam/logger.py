@@ -1,4 +1,15 @@
 # -*- coding: utf-8 -*-
+"""Logger for djangospam HTTP events.
+
+Settings
+--------
+
+DJANGOSPAM__LOG
+    Log file path and name. Defaults to `False` (no logging).
+DJANGOSPAM_FAIL_ON_LOG
+    If djangospam should raise an exception when it fails to log. Defaults
+    to `False`.
+"""
 from __future__ import unicode_literals
 
 import sys, os, pwd, datetime

@@ -22,8 +22,29 @@ Eg.::
     must be changed to::
         
         from djangospam.akismet import moderator as akismet
+    
+    Using from `djangospam import akismet` is now deprecated and won't be
+    available from 1.0.0 on.
 
-See akismet_ above for **mandatory settings**.
+Settings
+--------
+
+The following settings are mandatory:
+
+AKISMET_BLOG
+    Your home page URL, including http://
+AKISMET_KEY
+    Your application key at akismet.com
+AKISMET_USERAGENT
+    Your application name
+AKISMET_USERAGENT_VERSION
+    Your application version
+
+This setting is optional:
+    
+DISCARD_SPAM
+    If spam should be either automaticaly discarded or marked as not public and
+    removed. Defaults to `False`.
 """
 from __future__ import unicode_literals
 from django.contrib.comments.moderation import CommentModerator, \
