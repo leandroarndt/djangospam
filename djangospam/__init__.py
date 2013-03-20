@@ -136,6 +136,8 @@ Change log
 ==========
 
 * 0.4:
+    * 0.4.1 (*2013-03-21*):
+        Bugfix at djangospam.akismet.
     * 0.4.0 (*2013-03-20*):
         * Added cookie-based comment moderator.
         * Transformed Akismet module into a separate subpackage.
@@ -169,4 +171,4 @@ Change log
         * First version.
 """
 
-__version__ = "0.4.0"
+__version__ = "0.4.1"
