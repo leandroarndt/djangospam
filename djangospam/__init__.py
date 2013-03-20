@@ -141,7 +141,8 @@ Change log
         * Transformed Akismet module into a separate subpackage.
             .. warning::
                 Code that used Akismet module needs to be rewritten. See
-                :mod:`djangospam.akismet` for the current code.
+                :mod:`djangospam.akismet` for the current code. Old code should
+                work until 1.0.0.
         * Improved logger.
 * 0.3:
     * 0.3.4 (*2013-03-18*):
