@@ -4,6 +4,7 @@ from django.template import RequestContext, Template
 from datetime import datetime, timedelta
 
 from settings import COOKIE_KEY, COOKIE_SPAM, COOKIE_LOG
+from djangospam.logger import log
 
 def spammer_view(request):
     """View for setting cookies on spammers."""
@@ -18,10 +19,7 @@ def spammer_view(request):
                         expires=datetime.now()+timedelta(days=3650))
     
     if COOKIE_LOG:
-        f = open(COOKIE_LOG, "a")
-        f.write("BLOCK RESPONSE type %s page %s user agent %s\n" %\
-                (request.method, request.path_info,
-                 request.META["HTTP_USER_AGENT"]))
-        f.close()
+        log("BLOCK RESPONSE", request.method, request.path_info,
+            request.META.get("HTTP_USER_AGENT", "undefined"))
 
     return response
