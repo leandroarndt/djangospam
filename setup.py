@@ -45,13 +45,13 @@ See http://pythonhosted.org/djangospam for complete documentation. Djangospam
 is compatible with both Python 2 and 3.
 
 Quick start
-===========
+-----------
 
 These are the basic steps for using djangospam. You can get more info on
 the cited modules and at :mod:`djangospam.settings`.
 
 Fake form with cookie middleware
---------------------------------
+++++++++++++++++++++++++++++++++
 
 *New in version 0.3.0*
 
@@ -69,7 +69,7 @@ to your url patterns (usually in your root urls.conf; `somewhere`
 may be any path, except the one used for true posts).
 
 Fake form without middleware
-----------------------------
+++++++++++++++++++++++++++++
 
 You may also use the fake form without the cookie middleware. This will
 *not* block access from known spam bots. In order to do this,
@@ -90,7 +90,7 @@ You may customize the fake formulary by copying it's template to
 `template/djangospam` at your application's directory and editing it.
 
 Cookie-based moderator
-----------------------
+++++++++++++++++++++++
 
 *New in version 0.4.0*
 
@@ -114,7 +114,7 @@ Your models file should be like this::
         pass
 
 Akismet
--------
++++++++
 
 *New in version 0.2.0*
 
@@ -180,7 +180,7 @@ Change log
     * 0.4.0 (*2013-03-20*):
         * Added cookie-based comment moderator.
         * Transformed Akismet module into a separate subpackage.
-        .. warning::
+        **Warning:**
             Code that used Akismet module needs to be rewritten. See
             `djangospam.akismet` for the current code.
         * Improved logger.
