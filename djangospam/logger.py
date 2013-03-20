@@ -7,10 +7,13 @@ import settings
 class LogError(Exception):
     def __init__(self, exc_type, exc_value):
         self.msg = "%s while trying to write log on %s. Is it writeable by %s?\
- Returned message: \"%s\"." % (
-                     exc_type, exc_value, settings.DJANGOSPAM_LOG,
+\nReturned message: \"%s\"." % (
+                     exc_type.__name__, settings.DJANGOSPAM_LOG,
                      pwd.getpwuid(os.getuid())[0], exc_value,
                      )
+    
+    def __str__(self):
+        return self.msg
 
 def log(ltype, method, page, user_agent):
     try:
