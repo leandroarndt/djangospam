@@ -3,6 +3,9 @@
 Django antispam module with an invisible fake comment/contact form,
 cookie based middleware and Akismet verification.
 
+Basic usage
+===========
+
 General options
 ---------------
 
@@ -47,12 +50,6 @@ DJANGOSPAM_COOKIE_SPAM
     status code (moved permanently or forbidden, according to the standards).
     Defaults to `1`.
     
-.. note::
-    
-    If :class:`djangospam.cookie.middleware.SpamCookieMiddleware`
-    is being used, :mod:`djangospam.akismet` module
-    will treat as spam any comment attempt with cookies disabled.
-
 You may customize the fake formulary by copying it's template to
 `template/djangospam` at your application's directory and editing it.
 
@@ -168,9 +165,9 @@ Change log
     * 0.4.0 (*2013-03-19*):
         * Added cookie-based comment moderator.
         * Transformed Akismet module into a separate subpackage.
-        .. warning::
-            Code that used Akismet module needs to be rewritten. See
-            :mod:`djangospam.akismet` for the current code.
+            .. warning::
+                Code that used Akismet module needs to be rewritten. See
+                :mod:`djangospam.akismet` for the current code.
         * Improved logger.
 * 0.3:
     * 0.3.4 (*2013-03-18*):

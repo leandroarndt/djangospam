@@ -2,7 +2,7 @@
 """Defines a cookie-based comment moderator that should be attached to
 your commented model. This moderator tests comment post requests for
 the djangospam cookie and discards those which don't have it.
-See :mod:`djangospam.cookie.middleware` for mor info on the cookie system.
+See :mod:`djangospam.cookie.middleware` for more info on the cookie system.
 Code that uses this comment moderator **must** use that middleware.
 
 Eg.::

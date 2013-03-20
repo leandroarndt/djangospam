@@ -54,11 +54,6 @@ DJANGOSPAM_COOKIE_SPAM
     status code (moved permanently or forbidden, according to the standards).
     Defaults to `1`.
     
-**Note:**    
-    If `djangospam.cookie.middleware.SpamCookieMiddleware`
-    is being used, `djangospam.akismet` module
-    will treat as spam any comment attempt with cookies disabled.
-
 You may customize the fake formulary by copying it's template to
 `template/djangospam` at your application's directory and editing it.
 

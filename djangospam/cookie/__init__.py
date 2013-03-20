@@ -37,5 +37,3 @@ DJANGOSPAM_COOKIE_SPAM
 
 # We want to make it available at djangospam.cookie.SpamCookieMiddleware
 from middleware import SpamCookieMiddleware
-
-from settings import COOKIE_KEY, COOKIE_PASS, COOKIE_SPAM, COOKIE_LOG

@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.template import RequestContext, Template
 from datetime import datetime, timedelta
 
-from settings import COOKIE_KEY, COOKIE_SPAM, COOKIE_LOG
+from djangospam.settings import COOKIE_KEY, COOKIE_SPAM, DJANGOSPAM_LOG
 from djangospam.logger import log
 
 def spammer_view(request):
@@ -18,7 +18,7 @@ def spammer_view(request):
     response.set_cookie(COOKIE_KEY, value=COOKIE_SPAM, httponly=True,
                         expires=datetime.now()+timedelta(days=3650))
     
-    if COOKIE_LOG:
+    if DJANGOSPAM_LOG:
         log("BLOCK RESPONSE", request.method, request.path_info,
             request.META.get("HTTP_USER_AGENT", "undefined"))
 
