@@ -180,7 +180,7 @@ Change log
     * 0.4.0 (*2013-03-20*):
         * Added cookie-based comment moderator.
         * Transformed Akismet module into a separate subpackage.
-        **Warning:**
+            **Warning:**
             Code that used Akismet module needs to be rewritten. See
             `djangospam.akismet` for the current code.
         * Improved logger.
@@ -207,5 +207,6 @@ Change log
         * Bugfixes.
     * 0.1.0 (*2013-03-09*):
         * First version.
+
 """,
 )
