@@ -20,5 +20,5 @@ def log(ltype, method, page, user_agent):
         f.close()
     except:
         if settings.DJANGOSPAM_FAIL_ON_LOG:
-            exc_type, exc_value = sys.exc_info[:2]
+            exc_type, exc_value = sys.exc_info()[:2]
             raise LogError(exc_type, exc_value)
