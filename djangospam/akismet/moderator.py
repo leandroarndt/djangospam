@@ -27,7 +27,7 @@ Eg.::
     available from 1.0.0 on.
 
 Settings
---------
+++++++++
 
 The following settings are mandatory:
 

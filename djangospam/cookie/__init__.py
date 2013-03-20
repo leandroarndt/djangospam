@@ -29,7 +29,7 @@ DJANGOSPAM_COOKIE_SPAM
     Defaults to `1`.
     
 Comment moderator
------------------
++++++++++++++++++
 
 .. versionadded:: 0.4.0
 

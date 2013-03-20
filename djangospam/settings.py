@@ -2,7 +2,7 @@
 """Provides general options and akismet settings.
 
 General options
----------------
++++++++++++++++
 
 This option is used by more than one djangospam module/package:
 
@@ -11,7 +11,7 @@ DISCARD_SPAM
     removed. Defaults to `False`.
 
 Logging settings
-----------------
+++++++++++++++++
 
 These afect :mod:`djangospam.logger`:
 
@@ -22,7 +22,7 @@ DJANGOSPAM_FAIL_ON_LOG
     to `False`.
 
 Cookie settings
----------------
++++++++++++++++
 
 The following settings are optional and used by :mod:`djangospam.cookie`:
 
@@ -42,7 +42,7 @@ DJANGOSPAM_DISCARD_NO_COOKIE
     Defaults to `False`. Used by :mod:`djangospam.cookie.moderator`.
     
 Akismet settings
-----------------
+++++++++++++++++
 
 You **must** define the variables below at `settings.py` if you want to
 use :mod:`djangospam.akismet`:

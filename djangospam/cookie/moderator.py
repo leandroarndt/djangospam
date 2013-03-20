@@ -21,7 +21,7 @@ Your models file should be like this::
         pass
 
 Settings
---------
+++++++++
 
 The following settings are optional:
 

@@ -2,7 +2,7 @@
 """Logger for djangospam HTTP events.
 
 Settings
---------
+++++++++
 
 DJANGOSPAM_LOG
     Log file path and name. Defaults to `False` (no logging).
