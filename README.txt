@@ -11,7 +11,7 @@ Quick start
 -----------
 
 These are the basic steps for using djangospam. You can get more info on
-the cited modules and at :mod:`djangospam.settings`.
+the cited modules and at `djangospam.settings`.
 
 ### Fake form with cookie middleware
 
