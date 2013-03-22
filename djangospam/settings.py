@@ -94,8 +94,11 @@ try:
 except AttributeError:
     DISCARD_NO_COOKIE = False
 
-# Mandatory settings:
-AKISMET_KEY = settings.AKISMET_KEY
-AKISMET_USERAGENT = settings.AKISMET_USERAGENT
-AKISMET_USERAGENT_VERSION = settings.AKISMET_USERAGENT_VERSION
-AKISMET_BLOG = settings.AKISMET_BLOG
+# Mandatory settings for Akismet:
+try:
+    AKISMET_KEY = settings.AKISMET_KEY
+    AKISMET_USERAGENT = settings.AKISMET_USERAGENT
+    AKISMET_USERAGENT_VERSION = settings.AKISMET_USERAGENT_VERSION
+    AKISMET_BLOG = settings.AKISMET_BLOG
+except AttributeError:
+    pass
