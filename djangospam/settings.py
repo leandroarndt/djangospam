@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-"""Provides general options and akismet settings.
+"""Provides a common configuration interface for all :mod:`djangospam`
+modules. These options should be set at `settings.py`.
 
 General options
 +++++++++++++++
