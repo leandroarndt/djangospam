@@ -136,6 +136,8 @@ Change log
 ==========
 
 * 0.4:
+    * 0.4.3 (*2013-03-23*):
+        * Fake forms made invisible via javascript.
     * 0.4.2 (*2013-03-22*):
         * Akismet settings made optional for non-Akismet users.
     * 0.4.1 (*2013-03-21*):

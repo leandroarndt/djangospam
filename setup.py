@@ -15,7 +15,7 @@ setup(
     author_email = "contato@correioprogressista.com.br",
     url = "https://github.com/leandroarndt/djangospam",
     download_url = \
-        "https://github.com/leandroarndt/djangospam/archive/v0.4.2.tar.gz",
+        "https://github.com/leandroarndt/djangospam/archive/v0.4.3.tar.gz",
     keywords = ["django", "spam", "akismet", "middleware"],
     requires = ["django"],
     license = "BSD",
@@ -177,6 +177,8 @@ Change log
 ==========
 
 * 0.4:
+    * 0.4.3 (*2013-03-23*):
+        * Fake forms made invisible via javascript.
     * 0.4.2 (*2013-03-22*):
         * Akismet settings made optional for non-Akismet users.
     * 0.4.1 (*2013-03-21*):
