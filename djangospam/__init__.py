@@ -135,6 +135,9 @@ it identified 244 spammers and blocked 68 requests from known spammers::
 Change log
 ==========
 
+* 1.0:
+    * 1.0.0 (*2013-04-01*):
+        * Changed version number and labeled as "stable".
 * 0.4:
     * 0.4.3 (*2013-03-23*):
         * Fake forms made invisible via javascript.
@@ -175,4 +178,4 @@ Change log
         * First version.
 """
 
-__version__ = "0.4.3"
+__version__ = "1.0.0"
