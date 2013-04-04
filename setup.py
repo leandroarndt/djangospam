@@ -15,13 +15,14 @@ setup(
     author_email = "contato@correioprogressista.com.br",
     url = "https://github.com/leandroarndt/djangospam",
     download_url = \
-        "https://github.com/leandroarndt/djangospam/archive/v0.4.3.tar.gz",
+        "https://github.com/leandroarndt/djangospam/archive/v"+\
+        djangospam.__version__+".tar.gz",
     keywords = ["django", "spam", "akismet", "middleware"],
     requires = ["django"],
     license = "BSD",
     platforms = "OS independent",
     classifiers = [
-        "Development Status :: 4 - Beta",
+        "Development Status :: 5 - Production/Stable",
         "Framework :: Django",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: BSD License",
