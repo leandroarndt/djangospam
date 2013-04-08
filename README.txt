@@ -24,7 +24,7 @@ crawlers usually don't accept cookies, but spam bots may accept, since
 a website may require this to receive comments. In order to use the
 cookie middleware, add `djangospam.cookie.middleware.SpamCookieMiddleware`
 to `MIDDLEWARE_CLASSES` at your settings file (usually `settings.py`).
-In your template, insert::
+In your template, insert **before** the true form::
     
     {% include 'djangospam/cookieform.html' %}
 

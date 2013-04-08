@@ -3,7 +3,8 @@
 Django antispam module with an invisible fake comment/contact form,
 cookie based middleware and Akismet verification.
 
-See https://github.com/leandroarndt/djangospam for development versions.
+Djangospam is compatible with both Python 2 and 3.
+See https://github.com/leandroarndt/djangospam for development versions..
 
 Quick start
 ===========
