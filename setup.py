@@ -23,6 +23,7 @@ setup(
     platforms = "OS independent",
     classifiers = [
         "Development Status :: 5 - Production/Stable",
+        "Environment :: Web Environment",
         "Framework :: Django",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: BSD License",
@@ -45,6 +46,8 @@ cookie based middleware and Akismet verification.
 See http://pythonhosted.org/djangospam for complete documentation. Djangospam
 is compatible with both Python 2 and 3.
 
+See https://github.com/leandroarndt/djangospam for development versions.
+
 Quick start
 -----------
 
@@ -60,7 +63,7 @@ The cookie middleware uses cookies to identify known spam bots. Simple
 crawlers usually don't accept cookies, but spam bots may accept, since
 a website may require this to receive comments. In order to use the
 cookie middleware, add `djangospam.cookie.middleware.SpamCookieMiddleware`
-to `MIDDLEWARE_CLASSES` at your settins file (usually `settings.py`).
+to `MIDDLEWARE_CLASSES` at your settings file (usually `settings.py`).
 In your template, insert::
     
     {% include 'djangospam/cookieform.html' %}
@@ -68,6 +71,10 @@ In your template, insert::
 You must also add `(r"^somewhere/", include("djangospam.cookie.urls")`
 to your url patterns (usually in your root urls.conf; `somewhere`
 may be any path, except the one used for true posts).
+I suggest using the following paths::
+    
+    (r'^comments/', include('djangospam.cookie.urls')),
+    (r'^spam/', include('django.contrib.comments.urls')),
 
 Fake form without middleware
 ++++++++++++++++++++++++++++
@@ -160,19 +167,20 @@ AKISMET_USERAGENT_VERSION
 Results
 =======
 
-The fake form alone is getting more than 99,9% (*circa* 1,399 out of 
-1,400 spam comments) efficiency at
+Since version 0.4.3, the cookie-based middleware (with fake forms and
+the cookie-based comment moderator) has achieved 100% efficiency at
 http://www.correioprogressista.com.br/, which used to have more than 200
 spam comments each day. Even so, I recommend using Akismet or another
 spam analysis tool.
 
-On the first 14 hours of the cookie middleware at the same website,
-it identified 244 spammers and blocked 68 requests from known spammers::
-    
-    $ grep -c "BLOCK RESPONSE" spam.log 
-    244
-    $ grep -c "SPAM REQUEST" spam.log 
-    68
+Since version 0.3.0 (first with cookie middleware) up to 8th april 2013,
+the cookie middleware identified 5166 spammers and blocked 1917 requests
+from known spammers at the same website::
+
+     $ grep -c "BLOCK RESPONSE" spam.log 
+    5166
+     $ grep -c "SPAM REQUEST" spam.log 
+    1917
 
 Change log
 ==========
