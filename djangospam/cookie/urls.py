@@ -5,7 +5,10 @@ to your url patterns (usually in your root urls.conf; `somewhere`
 may be any path, except the one used for true posts).
 """
 
-from django.conf.urls.defaults import patterns
+try:
+    from django.conf.urls import patterns
+except ImportError:
+    from django.conf.urls.defaults import patterns
 
 urlpatterns = patterns('',
                        (r'^post$', 'djangospam.cookie.views.spammer_view'),)
