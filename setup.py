@@ -186,6 +186,8 @@ Change log
 ==========
 
 * 1.0:
+    * 1.0.1 (*2014-04-10*):
+        * Added support for Django 1.4 and later.
     * 1.0.0 (*2013-04-01*):
         * Changed version number and labeled as "stable".
 * 0.4:
