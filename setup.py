@@ -9,7 +9,7 @@ setup(
     package_data = {"djangospam": ["templates/djangospam/form.html",
                                    "templates/djangospam/cookieform.html"]},
     version = djangospam.__version__,
-    description = "Django antispam module with invisible fake comment/contact\
+    description = "Python antispam module with invisible fake comment/contact\
  form, cookie based middleware and Akismet verification.",
     author = "Leandro Arndt",
     author_email = "contato@correioprogressista.com.br",
@@ -40,7 +40,7 @@ setup(
 djangospam
 ==========
 
-Django antispam module with an invisible fake comment/contact form,
+Python antispam module aimed at Django with an invisible fake comment/contact form,
 cookie based middleware and Akismet verification.
 
 See http://pythonhosted.org/djangospam for complete documentation. Djangospam
@@ -168,7 +168,7 @@ Results
 =======
 
 Since version 0.4.3, the cookie-based middleware (with fake forms and
-the cookie-based comment moderator) has achieved 100% efficiency at
+the cookie-based comment moderator) has achieved 100% efficiency at former
 http://www.correioprogressista.com.br/, which used to have more than 200
 spam comments each day. Even so, I recommend using Akismet or another
 spam analysis tool.
@@ -186,7 +186,7 @@ Change log
 ==========
 
 * 1.0:
-    * 1.0.1 (*2014-04-10*):
+    * 1.0.1 (*2015-01-10*):
         * Added support for Django 1.4 and later.
     * 1.0.0 (*2013-04-01*):
         * Changed version number and labeled as "stable".
