@@ -1,7 +1,7 @@
 djangospam
 ==========
 
-Python antispam module aimed at Django with an invisible fake comment/contact form,
+Django antispam module aimed at Django with an invisible fake comment/contact form,
 cookie based middleware and Akismet verification.
 
 See http://pythonhosted.org/djangospam for complete documentation. Djangospam

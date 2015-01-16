@@ -9,10 +9,10 @@ setup(
     package_data = {"djangospam": ["templates/djangospam/form.html",
                                    "templates/djangospam/cookieform.html"]},
     version = djangospam.__version__,
-    description = "Python antispam module with invisible fake comment/contact\
+    description = "Django antispam module with invisible fake comment/contact\
  form, cookie based middleware and Akismet verification.",
     author = "Leandro Arndt",
-    author_email = "contato@correioprogressista.com.br",
+    author_email = "contato@caritasinveritate.teo.br",
     url = "https://github.com/leandroarndt/djangospam",
     download_url = \
         "https://github.com/leandroarndt/djangospam/archive/v"+\
@@ -40,7 +40,7 @@ setup(
 djangospam
 ==========
 
-Python antispam module aimed at Django with an invisible fake comment/contact form,
+Django antispam module aimed at Django with an invisible fake comment/contact form,
 cookie based middleware and Akismet verification.
 
 See http://pythonhosted.org/djangospam for complete documentation. Djangospam

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Python antispam module aimed at Django with an invisible fake comment/contact form,
+Django antispam module aimed at Django with an invisible fake comment/contact form,
 cookie based middleware and Akismet verification.
 
 Djangospam is compatible with both Python 2 and 3.
