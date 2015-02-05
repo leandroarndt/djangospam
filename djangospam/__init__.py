@@ -144,8 +144,10 @@ Change log
 ==========
 
 * 1.1:
+    * 1.1.1 (*2015-02-05*):
+        * Fixed Windows compatibility issue on logger.
     * 1.1.0 (*2015-02-05*):
-        * Added support for django_comments (former django.contrib.comments)
+        * Added support for django_comments (former django.contrib.comments).
 * 1.0:
      
     * 1.0.1 (*2015-01-10*):
@@ -192,4 +194,4 @@ Change log
         * First version.
 """
 
-__version__ = "1.1.0"
+__version__ = "1.1.1"
