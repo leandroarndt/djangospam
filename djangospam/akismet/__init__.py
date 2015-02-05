@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import moderator
+from djangospam.akismet import moderator
 import warnings
 
 def register(*args, **kwargs):

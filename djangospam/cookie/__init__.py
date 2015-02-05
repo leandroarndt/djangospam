@@ -39,4 +39,4 @@ for more info.
 """
 
 # We want to make it available at djangospam.cookie.SpamCookieMiddleware
-from middleware import SpamCookieMiddleware
+from djangospam.cookie.middleware import SpamCookieMiddleware

@@ -47,8 +47,13 @@ DISCARD_SPAM
     removed. Defaults to `False`.
 """
 from __future__ import unicode_literals
-from django.contrib.comments.moderation import CommentModerator, \
+
+try:
+    from django.contrib.comments.moderation import CommentModerator, \
                                                moderator, AlreadyModerated
+except ImportError:
+    from django_comments.moderation import CommentModerator, \
+                                            moderator, AlreadyModerated
 try:
     from urllib import urlencode
 except ImportError:
@@ -69,7 +74,7 @@ AKISMET_USERAGENT = "%s/%s | %s/%s" % \
                      "djangospam", djangospam.__version__)
 
 def register(model):
-    """Just a wrapper around django.contrib.comments.moderation.register.
+    """Just a wrapper around django_comments.moderation.register.
 It's only argument is the model for comment moderation."""
     moderator.register(model, Akismet)
     
@@ -83,7 +88,7 @@ class AkismetError(Exception):
         
 class Akismet(CommentModerator):
     """The comment moderator, defined according to the needs of
-django.contrib.comments.moderation."""
+django_comments.moderation."""
 
     def allow(self, comment, content_object, request):
         """Moderates comments."""

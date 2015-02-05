@@ -34,7 +34,7 @@ may be any path, except the one used for true posts).
 I suggest using the following paths::
     
     (r'^comments/', include('djangospam.cookie.urls')),
-    (r'^spam/', include('django.contrib.comments.urls')),
+    (r'^spam/', include('django_comments.urls')),
 
 ### Fake form without middleware
 
@@ -142,6 +142,9 @@ from known spammers at the same website::
 Change log
 ==========
 
+* 1.1:
+    * 1.1.0 (*2015-02-05*):
+        * Added support for django_comments (former django.contrib.comments)
 * 1.0:
     * 1.0.1 (*2015-01-10*):
         * Added support for Django 1.4 and later.

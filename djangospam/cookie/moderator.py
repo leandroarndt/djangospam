@@ -45,19 +45,23 @@ DISCARD_SPAM
 """
 from __future__ import unicode_literals
 
-from django.contrib.comments.moderation import CommentModerator, \
+try:
+    from django.contrib.comments.moderation import CommentModerator, \
                                                moderator, AlreadyModerated
-
+except ImportError:
+    from django_comments.moderation import CommentModerator, \
+                                            moderator, AlreadyModerated
+                                        
 from djangospam import settings
 
 def register(model):
-    """Just a wrapper around django.contrib.comments.moderation.register.
+    """Just a wrapper around django_comments.moderation.register.
 It's only argument is the model for comment moderation."""
     moderator.register(model, CookieModerator)
 
 class CookieModerator(CommentModerator):
     """The comment moderator, defined according to the needs of
-django.contrib.comments.moderation."""
+django_comments.moderation."""
     
     def allow(self, comment, content_object, request):
         """Tests comment post requests for the djangospam cookie."""
