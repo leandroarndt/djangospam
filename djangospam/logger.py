@@ -12,19 +12,33 @@ DJANGOSPAM_FAIL_ON_LOG
 """
 from __future__ import unicode_literals
 
-import sys, os, pwd, datetime
-import settings
+import sys, os, datetime
+
+try:
+    import pwd
+    unix = True
+except ImportError:
+    unix = False
+
+from djangospam import settings
 
 class LogError(Exception):
     """Exception raised if writing to DJANGOSPAM_LOG fails. Tells which
 exception has been raised before."""
     
     def __init__(self, exc_type, exc_value):
-        self.msg = "%s while trying to write log on %s. Is it writeable by %s?\
+        if unix:
+            self.msg = "%s while trying to write log on %s. Is it writeable by %s?\
 \nReturned message: \"%s\"." % (
-                     exc_type.__name__, settings.DJANGOSPAM_LOG,
-                     pwd.getpwuid(os.getuid())[0], exc_value,
-                     )
+                         exc_type.__name__, settings.DJANGOSPAM_LOG,
+                         pwd.getpwuid(os.getuid())[0], exc_value,
+                         )
+        else:
+            self.msg = "%s while trying to write log on %s. Is it writeable?\
+\nReturned message: \"%s\"." % (
+                         exc_type.__name__, settings.DJANGOSPAM_LOG,
+                         exc_value,
+                         )
     
     def __str__(self):
         return self.msg
