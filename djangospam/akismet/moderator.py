@@ -49,19 +49,22 @@ DISCARD_SPAM
 from __future__ import unicode_literals
 
 try:
-    from django.contrib.comments.moderation import CommentModerator, \
-                                               moderator, AlreadyModerated
-except ImportError:
     from django_comments.moderation import CommentModerator, \
                                             moderator, AlreadyModerated
+except ImportError:
+    from django.contrib.comments.moderation import CommentModerator, \
+                                               moderator, AlreadyModerated
+
 try:
     from urllib import urlencode
 except ImportError:
     from urllib.parse import urlencode
+
 try:
     from httplib import HTTPConnection
 except ImportError:
     from http.client import HTTPConnection
+
 import djangospam
 from djangospam import settings
 

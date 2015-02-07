@@ -144,6 +144,8 @@ Change log
 ==========
 
 * 1.1:
+    * 1.1.2 (*2015-02-07*):
+        * Tries to import django_comments before django.comments.moderator.
     * 1.1.1 (*2015-02-05*):
         * Fixed Windows compatibility issue on logger.
     * 1.1.0 (*2015-02-05*):
@@ -194,4 +196,4 @@ Change log
         * First version.
 """
 
-__version__ = "1.1.1"
+__version__ = "1.1.2"

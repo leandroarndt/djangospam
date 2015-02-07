@@ -46,11 +46,11 @@ DISCARD_SPAM
 from __future__ import unicode_literals
 
 try:
-    from django.contrib.comments.moderation import CommentModerator, \
-                                               moderator, AlreadyModerated
-except ImportError:
     from django_comments.moderation import CommentModerator, \
                                             moderator, AlreadyModerated
+except ImportError:
+    from django.contrib.comments.moderation import CommentModerator, \
+                                               moderator, AlreadyModerated
                                         
 from djangospam import settings
 
