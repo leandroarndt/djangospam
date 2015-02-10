@@ -144,6 +144,8 @@ Change log
 ==========
 
 * 1.1:
+    * 1.1.3 (*2015-02-10*):
+        * Fixed cookie moderator issue killing comments which should pass.
     * 1.1.2 (*2015-02-07*):
         * Tries to import django_comments before django.comments.moderator.
     * 1.1.1 (*2015-02-05*):
@@ -196,4 +198,4 @@ Change log
         * First version.
 """
 
-__version__ = "1.1.2"
+__version__ = "1.1.3"

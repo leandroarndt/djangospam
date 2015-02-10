@@ -73,4 +73,4 @@ django_comments.moderation."""
             comment.is_removed = True
             comment.is_public = False
             return True
-
+        return True
