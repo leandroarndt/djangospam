@@ -6,9 +6,17 @@ may be any path, except the one used for true posts).
 """
 
 try:
-    from django.conf.urls import patterns
+    from django.conf.urls import patterns, url
 except ImportError:
-    from django.conf.urls.defaults import patterns
+    try:
+        from django.conf.urls.defaults import patterns, url
+    except ImportError:
+        from django.conf.urls import url
 
-urlpatterns = patterns('',
-                       (r'^post$', 'djangospam.cookie.views.spammer_view'),)
+from .views import spammer_view
+
+try:
+    urlpatterns = patterns('',
+                        url(r'^post$', 'djangospam.cookie.views.spammer_view', name='spammer_view'),)
+except NameError:
+    urlpatterns = [url(r'^post$', spammer_view, name='spammer_view'),]

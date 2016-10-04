@@ -1,5 +1,5 @@
 <div id="{% if dsformid %}{{ dsformid }}{% else %}dsform{% endif %}">
-<form method="post" action="{% url "djangospam.cookie.views.spammer_view" %}">
+<form method="post" action="{% url "spammer_view" %}">
     <label for="honeypot">Honeypot</label>
         <input id="honeypot" type="text" name="honeypot"></input>
     <label for="name">Name</label>
