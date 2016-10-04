@@ -144,6 +144,8 @@ Change log
 ==========
 
 * 1.1:
+    * 1.1.4 (*2016-10-04*):
+        * Adapted to Django 1.10.
     * 1.1.3 (*2015-02-10*):
         * Fixed cookie moderator issue killing comments which should pass.
     * 1.1.2 (*2015-02-07*):
@@ -198,4 +200,4 @@ Change log
         * First version.
 """
 
-__version__ = "1.1.3"
+__version__ = "1.1.4"
