@@ -143,6 +143,8 @@ Change log
 ==========
 
 * 1.1:
+    * 1.1.4a (*2016-10-18*):
+        * Corrected previous version, which was not uploaded correctly.
     * 1.1.4 (*2016-10-04*):
         * Adapted to Django 1.10.
     * 1.1.3 (*2015-02-10*):
