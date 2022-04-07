@@ -1,14 +1,21 @@
 # -*- coding: utf-8 -*-
 """Middleware module. See :mod:`djangospam.cookie` for more info."""
 
+from ast import Import
+from tokenize import Name
 from django.http import HttpResponse
+try:
+    from django.utils.deprecation import MiddlewareMixin
+except (ImportError, NameError):
+    class MiddlewareMixin(object):
+        pass
 from datetime import datetime, timedelta
 
 from djangospam.settings import COOKIE_KEY, COOKIE_PASS, COOKIE_SPAM, \
                                 DJANGOSPAM_LOG
 from djangospam import logger
 
-class SpamCookieMiddleware(object):
+class SpamCookieMiddleware(MiddlewareMixin):
     """Verifies if a client has already been tagged as spam bot through
 `djangospam/cookieform.html`. You should add
 `djangospam.cookie.SpamCookieMiddleware` to your `MIDDLEWARE CLASSES` at
