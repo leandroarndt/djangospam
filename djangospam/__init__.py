@@ -126,7 +126,7 @@ Results
 =======
 
 Since version 0.4.3, the cookie-based middleware (with fake forms and
-the cookie-based comment moderator) has achieved 100% efficiency at former
+the cookie-based comment moderator) has achieved 100% efficiency at late
 http://www.correioprogressista.com.br/, which used to have more than 200
 spam comments each day. Even so, I recommend using Akismet or another
 spam analysis tool.
@@ -144,9 +144,9 @@ Change log
 ==========
 
 * 1.1:
-    * 1.1.6 (2022-04-07):
+    * 1.1.5 (2022-04-07):
         * Compatibility with new Django middleware pattern.
-    * 1.1.5 (*2016-10-18*):
+    * 1.1.4a (*2016-10-18*):
         * Corrected previous version, which was not uploaded correctly.
     * 1.1.4 (*2016-10-04*):
         * Adapted to Django 1.10.
@@ -159,7 +159,6 @@ Change log
     * 1.1.0 (*2015-02-05*):
         * Added support for django_comments (former django.contrib.comments).
 * 1.0:
-     
     * 1.0.1 (*2015-01-10*):
         * Added support for Django 1.4 and later.
     * 1.0.0 (*2013-04-01*):
