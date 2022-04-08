@@ -23,7 +23,7 @@ The cookie middleware uses cookies to identify known spam bots. Simple
 crawlers usually don't accept cookies, but spam bots may accept, since
 a website may require this to receive comments. In order to use the
 cookie middleware, add `djangospam.cookie.middleware.SpamCookieMiddleware`
-to `MIDDLEWARE_CLASSES` at your settings file (usually `settings.py`).
+to `MIDDLEWARE_CLASSES` or `MIDDLEWARE` at your settings file (usually `settings.py`).
 In your template, insert **before** the true form::
     
     {% include 'djangospam/cookieform.html' %}
@@ -126,7 +126,7 @@ Results
 
 Since version 0.4.3, the cookie-based middleware (with fake forms and
 the cookie-based comment moderator) has achieved 100% efficiency at
-former http://www.correioprogressista.com.br/, which used to have more than 200
+late http://www.correioprogressista.com.br/, which used to have more than 200
 spam comments each day. Even so, I recommend using Akismet or another
 spam analysis tool.
 
@@ -143,6 +143,8 @@ Change log
 ==========
 
 * 1.1:
+    * 1.1.6 (2022-04-07):
+        * Compatibility with new Django middleware pattern.
     * 1.1.4a (*2016-10-18*):
         * Corrected previous version, which was not uploaded correctly.
     * 1.1.4 (*2016-10-04*):
